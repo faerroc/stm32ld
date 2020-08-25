@@ -1,4 +1,4 @@
-MODULE=stm32ld
+MODULE=stm32loader
 
 all: stm32ld.o main.o serial_posix.o
 	$(CC) stm32ld.c main.c serial_posix.c -o $(MODULE)
