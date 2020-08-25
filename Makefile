@@ -1,13 +1,11 @@
+MODULE=stm32ld
 
-# Copyright (c) 2015 Simo Bergman
+all: stm32ld.o main.o serial_posix.o
+	$(CC) stm32ld.c main.c serial_posix.c -o $(MODULE)
 
-EXE=stm32ld
-OBJ=main.o serial_posix.o stm32ld.o
-CFLAGS= -Wall
-
-all: $(EXE)
-
-$(EXE):$(OBJ)
-
-clean: 
-	rm -f $(OBJ) $(EXE)
+install: $(MODULE)
+	install -m 755 $(MODULE) /usr/bin
+	
+clean:
+	rm -rf *.o
+	rm -rf $(MODULE)
